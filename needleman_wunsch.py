@@ -23,10 +23,10 @@ def M(i, j):
     else:
         global counter
         counter += 1
-        match_missmatch = M(i - 1, j - 1) + score(i, j)
+        match_mismatch = M(i - 1, j - 1) + score(i, j)
         deletion = M(i - 1, j) + g
         insertion = M(i, j - 1) + g
-        return max(match_missmatch, deletion, insertion)
+        return max(match_mismatch, deletion, insertion)
 
 
 def backtrack(i, j, current_score):
@@ -43,7 +43,7 @@ def backtrack(i, j, current_score):
         out_2 = seq_2[j] + out_2
         backtrack(i, j - 1, M(i, j - 1))
     elif M(i - 1, j - 1) + score(i, j) == current_score:
-        # match or missmatch
+        # match or mismatch
         out_1 = seq_1[i] + out_1
         out_2 = seq_2[j] + out_2
         backtrack(i - 1, j - 1, M(i - 1, j - 1))
